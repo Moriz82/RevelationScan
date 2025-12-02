@@ -1,0 +1,46 @@
+{
+  "services": [
+    {
+      "name": "sudo",
+      "command": ["sudo", "--version"],
+      "pattern": "sudo version (\\d+\\.\\d+\\.\\d+p?\\d*)",
+      "advisories": [
+        {
+          "cve": "CVE-2021-3156",
+          "fixed_version": "1.9.5p2",
+          "description": "Heap-based overflow via sudoedit allows local privilege escalation.",
+          "remediation": "Upgrade sudo to 1.9.5p2 or later and redeploy across managed hosts.",
+          "exploit": "If vulnerable, edit /etc/passwd via sudoedit overflow to escalate to root."
+        }
+      ]
+    },
+    {
+      "name": "openssl",
+      "command": ["openssl", "version"],
+      "pattern": "OpenSSL (\\d+\\.\\d+\\.\\d+[a-z]?)",
+      "advisories": [
+        {
+          "cve": "CVE-2021-3450",
+          "fixed_version": "1.1.1k",
+          "description": "Improper certificate verification permits CA bypass.",
+          "remediation": "Upgrade OpenSSL to 1.1.1k or newer and restart dependent services.",
+          "exploit": "With crafted certificates, MITM traffic to services trusting the flawed CA chain."
+        }
+      ]
+    },
+    {
+      "name": "bash",
+      "command": ["bash", "--version"],
+      "pattern": "GNU bash, version (\\d+\\.\\d+(?:\\.\\d+)?)",
+      "advisories": [
+        {
+          "cve": "CVE-2014-6271",
+          "fixed_version": "4.4",
+          "description": "Shellshock allows environment variable code injection.",
+          "remediation": "Patch Bash to 4.4 or later and restart exposed services.",
+          "exploit": "Send crafted headers to CGI scripts to execute arbitrary commands."
+        }
+      ]
+    }
+  ]
+}

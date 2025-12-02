@@ -1,0 +1,24 @@
+[project]
+name = "revelation-scan"
+version = "0.3.0"
+description = "Revelation Scan – modular Linux misconfiguration auditor"
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ["security", "audit", "education", "linpeas"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Security",
+]
+dependencies = []
+
+[project.scripts]
+revelation-scan = "RevelationScan.cli:main"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
