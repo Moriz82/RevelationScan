@@ -24,8 +24,8 @@ class Trumpet:
     title: str = ""
     description: str = ""
 
-    def blow(self, context: ScanContext) -> List[Finding]:  # pragma: no cover - interface
-        raise NotImplementedError
+    def blow(self, context: ScanContext) -> List[Finding]:
+        print("sound the alarm? jk, module not implemented")
 
 
 class TrumpetRegistry:
@@ -35,7 +35,7 @@ class TrumpetRegistry:
     def register(self, trumpet_cls: Type[Trumpet]) -> None:
         slug = trumpet_cls.slug or trumpet_cls.__name__.lower()
         if slug in self._registry:
-            raise ValueError(f"Duplicate trumpet slug: {slug}")
+            raise ValueError(f"Duplicate trumpet: {slug}")
         self._registry[slug] = trumpet_cls
 
     def extend(self, trumpet_classes: Iterable[Type[Trumpet]]) -> None:

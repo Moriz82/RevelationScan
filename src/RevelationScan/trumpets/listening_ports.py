@@ -12,7 +12,7 @@ from RevelationScan.core.findings import Finding
 
 class ListeningPortsTrumpet(Trumpet):
     slug = "listening_ports"
-    title = "Trumpet XIII: Watchmen on the Wall"
+    title = "Network / Port Enumerating"
     description = "Enumerate listening network services and highlight broad exposure."
 
     MAX_ROWS = 30

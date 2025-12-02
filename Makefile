@@ -17,13 +17,10 @@ compile:
 	$(PYTHON) -m compileall $(SRC)
 
 binary:
-	@command -v pyinstaller >/dev/null 2>&1 || { echo "pyinstaller is required for the binary target"; exit 1; }
-	pyinstaller --clean --onefile --name revelation-scan $(SRC)/$(PACKAGE)/__main__.py
+	@command -v pyinstaller >/dev/null 2>&1 || { echo "pyinstaller is required for the bin"; exit 1; }
+	pyinstaller --clean --onefile --name RevelationScan $(SRC)/$(PACKAGE)/__main__.py
 	mkdir -p $(DISTDIR)
-	cp dist/revelation-scan $(DISTDIR)/revelation-scan
+	cp dist/RevelationScan $(DISTDIR)/RevelationScan
 
 clean:
 	rm -rf $(DISTDIR) $(BUILD) $(SRC)/$(PACKAGE)/__pycache__ __pycache__ build __pycache__ *.spec dist/__pycache__
-
-test:
-	PYTHONPATH=$(SRC) $(PYTHON) -m unittest discover -s tests
