@@ -1,6 +1,6 @@
 # Revelation Scan
 
-Revelation Scan is a modular, self-contained Linux security reconnaissance tool inspired by the depth of linPEAS. It focuses on misconfiguration discovery inside controlled lab environments for ethical security research.
+Revelation Scan is a modular, self-contained Linux security reconnaissance tool inspired by the depth of linPEAS. It focuses on misconfiguration discovery inside controlled lab environments for ethical security research. While it CAN run on most OS's its best supported for linux!
 
 ## Highlights
 - Pure Python standard library – no third-party dependencies for runtime or scanning.
