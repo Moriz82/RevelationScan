@@ -41,6 +41,258 @@
           "exploit": "Send crafted headers to CGI scripts to execute arbitrary commands."
         }
       ]
+    },
+    {
+      "name": "openssh",
+      "command": ["ssh", "-V"],
+      "pattern": "OpenSSH_(\\d+\\.\\d+p?\\d*)",
+      "advisories": [
+        {
+          "cve": "CVE-2023-28531",
+          "fixed_version": "9.3p2",
+          "description": "Remote code execution via buffer overflow in sshd.",
+          "remediation": "Upgrade OpenSSH to 9.3p2 or later and restart sshd service.",
+          "exploit": "Crafted authentication request can trigger buffer overflow leading to RCE."
+        },
+        {
+          "cve": "CVE-2021-41617",
+          "fixed_version": "8.8p1",
+          "description": "Privilege escalation via ssh-agent forwarding.",
+          "remediation": "Upgrade OpenSSH to 8.8p1 or later.",
+          "exploit": "Malicious server can extract private keys from forwarded ssh-agent."
+        }
+      ]
+    },
+    {
+      "name": "curl",
+      "command": ["curl", "--version"],
+      "pattern": "curl (\\d+\\.\\d+\\.\\d+)",
+      "advisories": [
+        {
+          "cve": "CVE-2023-38545",
+          "fixed_version": "8.4.0",
+          "description": "Heap buffer overflow in SOCKS5 proxy handshake.",
+          "remediation": "Upgrade curl to 8.4.0 or later.",
+          "exploit": "Crafted hostname in SOCKS5 proxy can cause heap overflow and RCE."
+        },
+        {
+          "cve": "CVE-2023-38546",
+          "fixed_version": "8.4.0",
+          "description": "Cookie injection vulnerability in libcurl.",
+          "remediation": "Upgrade curl to 8.4.0 or later.",
+          "exploit": "Malicious cookie can be injected into requests."
+        }
+      ]
+    },
+    {
+      "name": "wget",
+      "command": ["wget", "--version"],
+      "pattern": "Wget (\\d+\\.\\d+\\.\\d+)",
+      "advisories": [
+        {
+          "cve": "CVE-2016-4971",
+          "fixed_version": "1.19.0",
+          "description": "HTTP header injection vulnerability.",
+          "remediation": "Upgrade wget to 1.19.0 or later.",
+          "exploit": "Crafted URL can inject arbitrary HTTP headers."
+        },
+        {
+          "cve": "CVE-2017-13090",
+          "fixed_version": "1.19.2",
+          "description": "Buffer overflow in HTTP protocol handling.",
+          "remediation": "Upgrade wget to 1.19.2 or later.",
+          "exploit": "Crafted HTTP response can trigger buffer overflow."
+        }
+      ]
+    },
+    {
+      "name": "python",
+      "command": ["python3", "--version"],
+      "pattern": "Python (\\d+\\.\\d+\\.\\d+)",
+      "advisories": [
+        {
+          "cve": "CVE-2021-29921",
+          "fixed_version": "3.9.6",
+          "description": "Buffer overflow in PyCArg_repr function.",
+          "remediation": "Upgrade Python to 3.9.6 or later.",
+          "exploit": "Crafted ctypes call can trigger buffer overflow."
+        },
+        {
+          "cve": "CVE-2021-3177",
+          "fixed_version": "3.9.2",
+          "description": "Buffer overflow in ctypes.c_double.",
+          "remediation": "Upgrade Python to 3.9.2 or later.",
+          "exploit": "Crafted ctypes call can cause buffer overflow."
+        }
+      ]
+    },
+    {
+      "name": "git",
+      "command": ["git", "--version"],
+      "pattern": "version (\\d+\\.\\d+\\.\\d+)",
+      "advisories": [
+        {
+          "cve": "CVE-2024-32002",
+          "fixed_version": "2.45.1",
+          "description": "Arbitrary file write via git clone on case-insensitive filesystems.",
+          "remediation": "Upgrade git to 2.45.1 or later.",
+          "exploit": "Malicious repository can write files outside working directory."
+        },
+        {
+          "cve": "CVE-2024-32004",
+          "fixed_version": "2.45.1",
+          "description": "Remote code execution via git clone with submodules.",
+          "remediation": "Upgrade git to 2.45.1 or later.",
+          "exploit": "Crafted submodule configuration can execute arbitrary code."
+        }
+      ]
+    },
+    {
+      "name": "docker",
+      "command": ["docker", "--version"],
+      "pattern": "version (\\d+\\.\\d+\\.\\d+)",
+      "advisories": [
+        {
+          "cve": "CVE-2024-23653",
+          "fixed_version": "24.0.0",
+          "description": "Privilege escalation via BuildKit cache mounts.",
+          "remediation": "Upgrade Docker to 24.0.0 or later.",
+          "exploit": "BuildKit cache mounts can access host filesystem."
+        },
+        {
+          "cve": "CVE-2023-2253",
+          "fixed_version": "23.0.0",
+          "description": "Information disclosure via Docker Desktop.",
+          "remediation": "Upgrade Docker to 23.0.0 or later.",
+          "exploit": "Unauthorized access to Docker Desktop settings."
+        }
+      ]
+    },
+    {
+      "name": "apache",
+      "command": ["httpd", "-v"],
+      "pattern": "Apache/(\\d+\\.\\d+\\.\\d+)",
+      "advisories": [
+        {
+          "cve": "CVE-2023-45802",
+          "fixed_version": "2.4.58",
+          "description": "Request smuggling via mod_proxy_uwsgi.",
+          "remediation": "Upgrade Apache to 2.4.58 or later and restart httpd.",
+          "exploit": "Crafted requests can bypass security controls via request smuggling."
+        },
+        {
+          "cve": "CVE-2023-43622",
+          "fixed_version": "2.4.57",
+          "description": "Denial of service via mod_rewrite.",
+          "remediation": "Upgrade Apache to 2.4.57 or later and restart httpd.",
+          "exploit": "Crafted rewrite rules can cause server crash."
+        }
+      ]
+    },
+    {
+      "name": "mysql",
+      "command": ["mysql", "--version"],
+      "pattern": "Ver (\\d+\\.\\d+\\.\\d+)",
+      "advisories": [
+        {
+          "cve": "CVE-2024-21068",
+          "fixed_version": "8.0.36",
+          "description": "Privilege escalation via improper privilege checks.",
+          "remediation": "Upgrade MySQL to 8.0.36 or later and restart mysqld.",
+          "exploit": "Authenticated user can escalate privileges via crafted queries."
+        },
+        {
+          "cve": "CVE-2023-21980",
+          "fixed_version": "8.0.33",
+          "description": "Remote code execution via component vulnerability.",
+          "remediation": "Upgrade MySQL to 8.0.33 or later and restart mysqld.",
+          "exploit": "Crafted network packet can trigger RCE."
+        }
+      ]
+    },
+    {
+      "name": "postgresql",
+      "command": ["psql", "--version"],
+      "pattern": "psql \\(PostgreSQL\\) (\\d+\\.\\d+(?:\\.\\d+)?)",
+      "advisories": [
+        {
+          "cve": "CVE-2024-1597",
+          "fixed_version": "16.2",
+          "description": "Memory disclosure via COPY FROM STDIN.",
+          "remediation": "Upgrade PostgreSQL to 16.2 or later and restart postgresql service.",
+          "exploit": "Crafted COPY command can leak memory contents."
+        },
+        {
+          "cve": "CVE-2023-5868",
+          "fixed_version": "16.1",
+          "description": "Privilege escalation via CREATE INDEX CONCURRENTLY.",
+          "remediation": "Upgrade PostgreSQL to 16.1 or later and restart postgresql service.",
+          "exploit": "Authenticated user can escalate privileges via concurrent index creation."
+        }
+      ]
+    },
+    {
+      "name": "nginx",
+      "command": ["nginx", "-v"],
+      "pattern": "nginx/(\\d+\\.\\d+\\.\\d+)",
+      "advisories": [
+        {
+          "cve": "CVE-2022-41741",
+          "fixed_version": "1.23.3",
+          "description": "Integer overflow in ngx_http_mp4_module.",
+          "remediation": "Upgrade nginx to 1.23.3 or later and restart nginx service.",
+          "exploit": "Crafted MP4 file can cause integer overflow and potential RCE."
+        },
+        {
+          "cve": "CVE-2023-44487",
+          "fixed_version": "1.25.3",
+          "description": "HTTP/2 rapid reset denial of service.",
+          "remediation": "Upgrade nginx to 1.25.3 or later and restart nginx service.",
+          "exploit": "Rapid HTTP/2 connection resets can cause DoS."
+        }
+      ]
+    },
+    {
+      "name": "node",
+      "command": ["node", "--version"],
+      "pattern": "v(\\d+\\.\\d+\\.\\d+)",
+      "advisories": [
+        {
+          "cve": "CVE-2024-21892",
+          "fixed_version": "20.11.0",
+          "description": "Code injection via process.binding.",
+          "remediation": "Upgrade Node.js to 20.11.0 or later.",
+          "exploit": "Crafted code can bypass process.binding restrictions."
+        },
+        {
+          "cve": "CVE-2023-39333",
+          "fixed_version": "20.10.0",
+          "description": "HTTP request smuggling via llhttp.",
+          "remediation": "Upgrade Node.js to 20.10.0 or later.",
+          "exploit": "Crafted HTTP requests can bypass security controls."
+        }
+      ]
+    },
+    {
+      "name": "systemd",
+      "command": ["systemctl", "--version"],
+      "pattern": "systemd (\\d+)",
+      "advisories": [
+        {
+          "cve": "CVE-2023-45883",
+          "fixed_version": "255",
+          "description": "Privilege escalation via systemd-tmpfiles.",
+          "remediation": "Upgrade systemd to 255 or later.",
+          "exploit": "Crafted tmpfiles configuration can create files with wrong permissions."
+        },
+        {
+          "cve": "CVE-2022-3821",
+          "fixed_version": "252",
+          "description": "Local privilege escalation via systemd-tmpfiles.",
+          "remediation": "Upgrade systemd to 252 or later.",
+          "exploit": "Crafted tmpfiles.d configuration can escalate privileges."
+        }
+      ]
     }
   ]
 }
