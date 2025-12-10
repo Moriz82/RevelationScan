@@ -65,5 +65,5 @@ A CVE feed is a JSON object with a `services` array. Each service requires:
 ```
 This format lets you sync with NVD/NIST exports, Exploit DB mirrors, or bespoke lab datasets without modifying Revelation Scan itself. Combine multiple URLs via `--cve-feed-url url1,url2` and run `--update-feed` to merge into your personal cache under `~/.cache/RevelationScan/cve_feed.json`.
 
-## Ethics
+## Disclaimer!!!
 Use Revelation Scan only inside authorized lab or sandbox environments. Many trumpets highlight misconfigurations that, if exploited without permission, could violate law or policy.
